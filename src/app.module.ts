@@ -5,14 +5,19 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './domain/auth/auth.module';
 import { UsersModule } from './domain/users/users.module';
 import { AssetsModule } from './domain/assets/assets.module';
-import { OpenSeaModule } from './domain/opensea/opensea.module';
+import { OpenSeaModule } from './domain/open-sea/open-sea.module';
+import { BundlesModule } from './domain/bundles/bundles.module';
 import { CollectionsModule } from './domain/collections/collections.module';
+import { EtherScanModule } from './domain/ether-scan/ether-scan.module';
+import { EthPricesModule } from './domain/eth-prices/eth-prices.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
     AuthModule,
     UsersModule,
     ConfigModule.forRoot(),
+    ScheduleModule.forRoot(),
     TypeOrmModule.forRootAsync({
       useFactory: () => ({
         type: 'mysql',
@@ -27,7 +32,10 @@ import { CollectionsModule } from './domain/collections/collections.module';
     }),
     AssetsModule,
     OpenSeaModule,
+    BundlesModule,
     CollectionsModule,
+    EtherScanModule,
+    EthPricesModule,
   ],
   controllers: [AppController],
   providers: [],

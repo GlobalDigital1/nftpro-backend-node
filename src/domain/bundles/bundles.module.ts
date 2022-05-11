@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { AssetsController } from './assets.controller';
+import { BundlesController } from './bundles.controller';
 import { OpenSeaModule } from '../open-sea/open-sea.module';
 
 @Module({
-  controllers: [AssetsController],
+  controllers: [BundlesController],
   imports: [OpenSeaModule],
 })
-export class AssetsModule {}
+export class BundlesModule {}

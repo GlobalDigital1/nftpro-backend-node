@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { OpenSeaService } from './opensea.service';
+import { OpenSeaService } from './open-sea.service';
 
 @Module({
   providers: [OpenSeaService],

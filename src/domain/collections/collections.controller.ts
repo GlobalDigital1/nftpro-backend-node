@@ -1,5 +1,5 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
-import { OpenSeaService } from '../opensea/opensea.service';
+import { OpenSeaService } from '../open-sea/open-sea.service';
 import { GetFilteredCollectionsDto } from './dtos/get-filtered-collections.dto';
 
 @Controller('collections')

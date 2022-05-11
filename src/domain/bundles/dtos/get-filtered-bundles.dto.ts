@@ -1,12 +1,6 @@
 import { IsOptional } from 'class-validator';
 
-export class GetFilteredAssetsDto {
-  @IsOptional()
-  order_by: string;
-
-  @IsOptional()
-  order_direction: string;
-
+export class GetFilteredBundlesDto {
   @IsOptional()
   search: string;
 

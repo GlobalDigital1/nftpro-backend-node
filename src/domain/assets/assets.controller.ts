@@ -1,5 +1,5 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
-import { OpenSeaService } from '../opensea/opensea.service';
+import { OpenSeaService } from '../open-sea/open-sea.service';
 import { GetFilteredAssetsDto } from './dtos/get-filtered-assets.dto';
 
 @Controller('assets')
@@ -11,8 +11,11 @@ export class AssetsController {
     return this.opensea.assets(data);
   }
 
-  @Get(':address')
-  public show(@Param('address') address: string) {
-    return this.opensea.asset(address);
+  @Get(':address/:token')
+  public show(
+    @Param('address') address: string,
+    @Param('token') token: string,
+  ) {
+    return this.opensea.asset(address, token);
   }
 }

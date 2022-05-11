@@ -19,18 +19,26 @@ export class OpenSeaService {
   }
 
   public assets(params) {
-    return this.seaport.api.getAssets(params);
+    return this.seaport.api.get('/api/v1/assets', params);
+  }
+
+  public asset(tokenAddress, tokenId) {
+    return this.seaport.api.getAsset({ tokenAddress, tokenId });
+  }
+
+  public bundles(params) {
+    return this.seaport.api.get('/api/v1/bundles', params);
+  }
+
+  public bundle(slug) {
+    return this.seaport.api.getBundle({ slug });
   }
 
   public collections(params) {
-    return this.seaport.api.getBundles(params);
-  }
-
-  public asset(address) {
-    return this.seaport.api.getAsset(address);
+    return this.seaport.api.get('/api/v1/collections', params);
   }
 
   public collection(slug) {
-    return this.seaport.api.getBundle(slug);
+    return this.seaport.api.get('/api/v1/collections' + slug);
   }
 }
