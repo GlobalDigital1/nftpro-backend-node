@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ethers } from 'ethers';
+
 const abi =
   require('../../artifacts/contracts/BaseERC1155.sol/nftproERC1155.json').abi;
 
@@ -11,7 +12,7 @@ export class MintEthService {
     process.env.ETH_API_KEY_PROJECT_ID,
   );
 
-  async mint(account: string, id: string, amount: number, tokenCID: string) {
+  mint(account: string, id: string, amount: number, tokenCID: string) {
     const wallet = new ethers.Wallet(
       process.env.ETH_PRIVATE_KEY,
       this.provider,
@@ -19,6 +20,8 @@ export class MintEthService {
     const signer = wallet.connect(this.provider);
     const contract = new ethers.Contract(this.contractAddress, abi, signer);
 
-    return contract.mint(account, id, amount, [], tokenCID);
+    contract.mint(account, id, amount, [], tokenCID);
+
+    return { tokenId: id, contractAddress: this.contractAddress };
   }
 }
