@@ -40,6 +40,8 @@ export class PinataService {
       },
     };
 
-    return pinata.pinJSONToIPFS(body, options);
+    const pin = await pinata.pinJSONToIPFS(body, options);
+
+    return { body, pin };
   }
 }

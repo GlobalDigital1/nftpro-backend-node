@@ -23,16 +23,18 @@ export class MintController {
     @Body() mintDto: MintDto,
     @UploadedFile() image: Express.Multer.File,
   ) {
-    const pin = await this.pinata.pinNFTMetadata(
+    const { body, pin } = await this.pinata.pinNFTMetadata(
       image.path,
       mintDto.name,
       mintDto.description,
     );
-    return this.mintEth.mint(
+    const mintData = await this.mintEth.mint(
       mintDto.accountId,
       mintDto.tokenId,
       1,
       pin.IpfsHash,
     );
+
+    return { pinData: body, mintData };
   }
 }

@@ -20,8 +20,6 @@ export class MintEthService {
     const signer = wallet.connect(this.provider);
     const contract = new ethers.Contract(this.contractAddress, abi, signer);
 
-    contract.mint(account, id, amount, [], tokenCID);
-
-    return { tokenId: id, contractAddress: this.contractAddress };
+    return contract.mint(account, id, amount, [], tokenCID);
   }
 }
