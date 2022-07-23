@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { PinataService } from './pinata.service';
-import { MintEthService } from './mint-eth.service';
+import { EthService } from './eth.service';
 import { MintController } from './mint.controller';
 import { MulterModule } from '@nestjs/platform-express';
+import { TransferController } from './transfer.controller';
 
 @Module({
   imports: [
@@ -10,7 +11,7 @@ import { MulterModule } from '@nestjs/platform-express';
       dest: './files',
     }),
   ],
-  providers: [PinataService, MintEthService],
-  controllers: [MintController],
+  providers: [PinataService, EthService],
+  controllers: [MintController, TransferController],
 })
-export class MintModule {}
+export class EthModule {}

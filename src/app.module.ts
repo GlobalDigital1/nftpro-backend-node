@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { ConfigModule } from '@nestjs/config';
-import { MintModule } from './mint/mint.module';
+import { EthModule } from './eth/eth.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), MintModule],
+  imports: [ConfigModule.forRoot(), EthModule],
   controllers: [AppController],
   providers: [],
 })

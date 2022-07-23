@@ -8,13 +8,13 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { MintDto } from './dtos/mint-dto';
 import { PinataService } from './pinata.service';
-import { MintEthService } from './mint-eth.service';
+import { EthService } from './eth.service';
 
 @Controller('mint')
 export class MintController {
   constructor(
     private readonly pinata: PinataService,
-    private readonly mintEth: MintEthService,
+    private readonly eth: EthService,
   ) {}
 
   @Post()
@@ -28,7 +28,7 @@ export class MintController {
       mintDto.name,
       mintDto.description,
     );
-    const mintData = await this.mintEth.mint(
+    const mintData = await this.eth.mint(
       mintDto.accountId,
       mintDto.tokenId,
       1,
