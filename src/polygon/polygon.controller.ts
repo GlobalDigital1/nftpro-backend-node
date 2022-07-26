@@ -5,19 +5,19 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
+import { PinataService } from '../pinata/pinata.service';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { PolygonService } from './polygon.service';
 import { MintDto } from './dtos/mint-dto';
-import { PinataService } from './pinata.service';
-import { EthService } from './eth.service';
 
-@Controller('mint')
-export class MintController {
+@Controller('polygon')
+export class PolygonController {
   constructor(
     private readonly pinata: PinataService,
-    private readonly eth: EthService,
+    private readonly polygon: PolygonService,
   ) {}
 
-  @Post()
+  @Post('mint')
   @UseInterceptors(FileInterceptor('image'))
   async create(
     @Body() mintDto: MintDto,
@@ -28,7 +28,7 @@ export class MintController {
       mintDto.name,
       mintDto.description,
     );
-    const mintData = await this.eth.mint(
+    const mintData = await this.polygon.mint(
       mintDto.accountId,
       mintDto.tokenId,
       1,

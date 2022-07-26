@@ -5,13 +5,13 @@ const abi =
   require('../../artifacts/contracts/BaseERC1155.sol/nftproERC1155.json').abi;
 
 @Injectable()
-export class EthService {
-  contractAddress = process.env.ETH_CONTRACT_ADDRESS;
+export class PolygonService {
+  contractAddress = process.env.POLYGON_CONTRACT_ADDRESS;
   provider = new ethers.providers.InfuraProvider(
-    process.env.ETH_NETWORK,
-    process.env.ETH_API_KEY_PROJECT_ID,
+    process.env.POLYGON_NETWORK,
+    process.env.POLYGON_API_KEY_PROJECT_ID,
   );
-  wallet = new ethers.Wallet(process.env.ETH_PRIVATE_KEY, this.provider);
+  wallet = new ethers.Wallet(process.env.POLYGON_PRIVATE_KEY, this.provider);
   signer = this.wallet.connect(this.provider);
   contract = new ethers.Contract(this.contractAddress, abi, this.signer);
 

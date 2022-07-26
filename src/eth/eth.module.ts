@@ -1,17 +1,17 @@
 import { Module } from '@nestjs/common';
-import { PinataService } from './pinata.service';
 import { EthService } from './eth.service';
-import { MintController } from './mint.controller';
+import { EthController } from './eth.controller';
 import { MulterModule } from '@nestjs/platform-express';
-import { TransferController } from './transfer.controller';
+import { PinataModule } from '../pinata/pinata.module';
 
 @Module({
   imports: [
     MulterModule.register({
       dest: './files',
     }),
+    PinataModule,
   ],
-  providers: [PinataService, EthService],
-  controllers: [MintController, TransferController],
+  providers: [EthService],
+  controllers: [EthController],
 })
 export class EthModule {}
