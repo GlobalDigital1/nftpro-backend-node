@@ -23,7 +23,7 @@ export class PinataService {
     const body = {
       name: name,
       description: description,
-      image: 'https://gateway.pinata.cloud/ipfs/' + imagePin.IpfsHash,
+      image: 'https://nft-pro.mypinata.cloud/ipfs/' + imagePin.IpfsHash,
     };
 
     enum CidVersion {
