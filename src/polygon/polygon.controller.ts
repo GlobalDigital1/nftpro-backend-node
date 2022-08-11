@@ -19,7 +19,7 @@ export class PolygonController {
 
   @Post('mint')
   @UseInterceptors(FileInterceptor('image'))
-  async create(
+  async mint(
     @Body() mintDto: MintDto,
     @UploadedFile() image: Express.Multer.File,
   ) {

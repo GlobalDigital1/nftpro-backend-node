@@ -9,7 +9,6 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { MintDto } from './dtos/mint-dto';
 import { PinataService } from '../pinata/pinata.service';
 import { EthService } from './eth.service';
-import { TransferDto } from './dtos/transfer-dto';
 
 @Controller('eth')
 export class EthController {
@@ -37,15 +36,5 @@ export class EthController {
     );
 
     return { pinData: body, mintData };
-  }
-
-  @Post('transfer')
-  async transfer(@Body() transferDto: TransferDto) {
-    return this.eth.transfer(
-      transferDto.from,
-      transferDto.to,
-      1,
-      transferDto.tokenId,
-    );
   }
 }
