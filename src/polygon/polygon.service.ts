@@ -16,7 +16,9 @@ export class PolygonService {
   contract = new ethers.Contract(this.contractAddress, abi, this.signer);
 
   mint(account: string, id: string, amount: number, tokenCID: string) {
-    return this.contract.mint(account, id, amount, [], tokenCID);
+    return this.contract.mint(account, id, amount, [], tokenCID, {
+      gasLimit: 100,
+    });
   }
 
   transfer(from: string, to: string, amount: number, id: string) {
