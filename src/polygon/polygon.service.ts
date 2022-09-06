@@ -17,7 +17,7 @@ export class PolygonService {
 
   mint(account: string, id: string, amount: number, tokenCID: string) {
     return this.contract.mint(account, id, amount, [], tokenCID, {
-      gasLimit: 100,
+      gasLimit: 100000,
     });
   }
 
